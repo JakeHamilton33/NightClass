@@ -37,7 +37,7 @@ public class HeadMovement : MonoBehaviour
     Position _position = Position.Paper;
 
     public GameObject player, phone, mainCamera;
-    private float duration = 1f;
+    private float duration = 0.6f;
 
     #endregion
 

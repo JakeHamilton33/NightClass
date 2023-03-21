@@ -33,7 +33,7 @@ public class HeadMovement : MonoBehaviour
     #endregion
 
     #region Declarations
-    enum Position { Paper, Professor, Phone, Classmate}
+    enum Position { Paper, Professor, Phone, Classmate, Moving}
     Position _position = Position.Paper;
 
     public GameObject player, phone, mainCamera;
@@ -87,6 +87,7 @@ public class HeadMovement : MonoBehaviour
     {
         if(_position == Position.Paper)
         {
+            _position = Position.Moving;
             float startTime = Time.time;
             float endTime = startTime + duration;
             yield return null;
@@ -109,6 +110,7 @@ public class HeadMovement : MonoBehaviour
     {
         if (_position == Position.Paper)
         {
+            _position = Position.Moving;
             float startTime = Time.time;
             float endTime = startTime + duration;
             yield return null;
@@ -126,6 +128,7 @@ public class HeadMovement : MonoBehaviour
     {
         if (_position == Position.Phone)
         {
+            _position = Position.Moving;
             float startTime = Time.time;
             float endTime = startTime + duration;
             yield return null;
@@ -144,6 +147,7 @@ public class HeadMovement : MonoBehaviour
 
         if (_position == Position.Classmate)
         {
+            _position = Position.Moving;
             float startTime = Time.time;
             float endTime = startTime + duration;
             yield return null;
@@ -158,6 +162,7 @@ public class HeadMovement : MonoBehaviour
 
         if (_position == Position.Professor)
         {
+            _position = Position.Moving;
             float startTime = Time.time;
             float endTime = startTime + duration;
             yield return null;
@@ -175,6 +180,7 @@ public class HeadMovement : MonoBehaviour
     {
         if (_position == Position.Paper)
         {
+            _position = Position.Moving;
             float startTime = Time.time;
             float endTime = startTime + duration;
             yield return null;

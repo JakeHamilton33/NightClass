@@ -21,7 +21,8 @@ public class HeadMovement : MonoBehaviour
     */
     private Quaternion headPaperRotation = new Quaternion(0.202f, 0.0f, 0.0f, 0.979f);
     private Quaternion headPhoneRotation = new Quaternion(0.315f, 0.159f, -0.054f, 0.934f);
-    private Quaternion headZhangRotation = new Quaternion(0.0f, -0.165f, 0.0f, 0.986f);
+    //private Quaternion headZhangRotation = new Quaternion(0.0f, -0.165f, 0.0f, 0.986f);
+    private Quaternion headZhangRotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.986f);
     private Quaternion headClassRotation = new Quaternion(0.086f, -0.544f, 0.063f, 0.833f);
 
     private Vector3 phoneDownPos = new Vector3(1.6f, 0.88f, 0.18f);
@@ -33,8 +34,9 @@ public class HeadMovement : MonoBehaviour
     #endregion
 
     #region Declarations
-    enum Position { Paper, Professor, Phone, Classmate, Moving}
-    Position _position = Position.Paper;
+    //Made _position public static so it can be shared between scripts
+    public enum Position { Paper, Professor, Phone, Classmate, Moving}
+    public static Position _position = Position.Paper;
 
     public GameObject player, phone, mainCamera;
     private float duration = 0.6f;

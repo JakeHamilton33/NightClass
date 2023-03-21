@@ -11,6 +11,7 @@ public class ProfessorScript : MonoBehaviour
 
     private Vector3 boardPostion = new Vector3(-2.8f, 1f, 14.5f);
     private Vector3 boardRotation = new Vector3(0f, -180f, 0f);
+    private Vector3 midPostion = new Vector3(-1.5f, 1f, 11f);
     private Vector3 closePostion = new Vector3(-1.37f, 1f, 3.8f);
 
     private bool watching;
@@ -21,7 +22,6 @@ public class ProfessorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        watching = false;
         phoneTimer = phoneGracePeriod;
         cheatTimer = cheatingGracePeriod;
         StartCoroutine("WaitAtBoard");
@@ -37,7 +37,9 @@ public class ProfessorScript : MonoBehaviour
     IEnumerator WaitAtBoard()
     {
         print("Board");
-        
+        StopCoroutine("Watching");
+        watching = false;
+
         //Move prof to board
         transform.position = boardPostion;
         transform.eulerAngles = boardRotation;
@@ -53,70 +55,69 @@ public class ProfessorScript : MonoBehaviour
         }
 
         //Victimize
-        RollForIntimidation();
+        StartCoroutine("ImGonnaGetYa");
     }
 
-    private void RollForIntimidation()
+    IEnumerator ImGonnaGetYa()
     {
-        //If player is looking at their phone, there is a chance for professor to be close
-        if(HeadMovement._position == HeadMovement.Position.Phone && Random.Range(1, 4) == 1)
+        transform.eulerAngles = Vector3.zero;
+
+        //Start Watching
+        print("Far");
+        StartCoroutine("Watching");
+
+        //Wait
+        yield return new WaitForSeconds(4f);
+
+        //Wait for player to stop moving
+        while (HeadMovement._position == HeadMovement.Position.Professor || HeadMovement._position == HeadMovement.Position.Moving)
         {
-            print("up close");
-            StartCoroutine("CloseWatch");
-            return;
+            yield return new WaitForSeconds(0.1f);
         }
 
-        print("far");
-        StartCoroutine("BoardWatch");
-    }
+        //Move forward
+        print("Mid");
+        transform.position = midPostion;
 
-    IEnumerator CloseWatch()
-    {
+        //Wait
+        yield return new WaitForSeconds(4f);
+
+        //Wait for player to look at phone
+        while (HeadMovement._position != HeadMovement.Position.Phone)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        //Move forward
+        print("Close");
         transform.position = closePostion;
-        transform.eulerAngles = Vector3.zero;
-
-        //Start Watching
-        watching = true;
 
         //Wait
-        float waitTime = Random.Range(4f, 10f);
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(Random.Range(4f, 7f));
 
-        //Wait for player to put their head down
-        while (HeadMovement._position == HeadMovement.Position.Professor || HeadMovement._position == HeadMovement.Position.Moving)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
-
-        //Stop Watching
-        watching = false;
-
-        //Back to board
-        StartCoroutine("WaitAtBoard");
+        print("Game Over from not watching professor");
     }
 
-    IEnumerator BoardWatch()
+    IEnumerator Watching()
     {
-        transform.eulerAngles = Vector3.zero;
-
-        //Start Watching
         watching = true;
-
-        //Wait
-        float waitTime = Random.Range(4f, 15f);
-        yield return new WaitForSeconds(waitTime);
-
-        //Wait for player to put their head down
-        while (HeadMovement._position == HeadMovement.Position.Professor || HeadMovement._position == HeadMovement.Position.Moving)
+        if (HeadMovement._position == HeadMovement.Position.Professor)
         {
-            yield return new WaitForSeconds(0.1f);
+            //Stop advancing toward player
+            StopCoroutine("ImGonnaGetYa");
+
+            //wait for player to put head down
+            while (HeadMovement._position == HeadMovement.Position.Moving || HeadMovement._position == HeadMovement.Position.Professor)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            //Start Over
+            StartCoroutine("WaitAtBoard");
         }
 
-        //Stop Watching
-        watching = false;
-
-        //Back to board
-        StartCoroutine("WaitAtBoard");
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine("Watching");
     }
 
     private void WatchForPhone()
@@ -132,7 +133,7 @@ public class ProfessorScript : MonoBehaviour
 
         if(phoneTimer <= 0)
         {
-            print("Game Over");
+            print("Game Over from Phone");
         }
     }
 
@@ -149,7 +150,7 @@ public class ProfessorScript : MonoBehaviour
 
         if (cheatTimer <= 0)
         {
-            print("Game Over");
+            print("Game Over from cheating");
         }
     }
 }

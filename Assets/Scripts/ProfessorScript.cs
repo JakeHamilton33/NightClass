@@ -18,7 +18,21 @@ public class ProfessorScript : MonoBehaviour
     private float phoneTimer;
     private float cheatTimer;
 
-    enum ProfessorPosition { Board, Watching, Desk }
+    enum ProfessorPosition { Board, Watching, Classroom, Desk }
+    /*
+
+    Hey I had an idea on how to use this enum field to keep track of his movements easier than all the booleans and float values
+
+    You can use them together for example if( _professorState == Watching && _Position == Phone ) to streamline the checks
+
+    You can also use this to keep track of which timer is going which can cut back on the different coroutines you need
+        EX: use one coroutine to keep track of all time and have the different values based on which state you and the professor are in and compare the two states
+
+    Obviously I know you're smart and I trust your judgement so whatever we end up with is all good
+    Feel free to look through the other script to see how I navigated states and hit me up if you have any questions bc I really enjoy using Enum states
+
+     */
+
     // Start is called before the first frame update
     void Start()
     {

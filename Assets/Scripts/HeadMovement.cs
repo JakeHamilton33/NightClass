@@ -21,8 +21,7 @@ public class HeadMovement : MonoBehaviour
     */
     private Quaternion headPaperRotation = new Quaternion(0.202f, 0.0f, 0.0f, 0.979f);
     private Quaternion headPhoneRotation = new Quaternion(0.315f, 0.159f, -0.054f, 0.934f);
-    //private Quaternion headZhangRotation = new Quaternion(0.0f, -0.165f, 0.0f, 0.986f);
-    private Quaternion headZhangRotation = new Quaternion(0.0f, 0.0f, 0.0f, 0.986f);
+    private Quaternion headZhangRotation = new Quaternion(0.0f, -0.083f, 0.0f, 0.986f);
     private Quaternion headClassRotation = new Quaternion(0.086f, -0.544f, 0.063f, 0.833f);
 
     private Vector3 phoneDownPos = new Vector3(1.6f, 0.88f, 0.18f);
@@ -39,7 +38,7 @@ public class HeadMovement : MonoBehaviour
     public static Position _position = Position.Paper;
 
     public GameObject player, phone, mainCamera;
-    private float duration = 0.6f;
+    private float duration = 0.7f;
 
     #endregion
 
@@ -92,22 +91,30 @@ public class HeadMovement : MonoBehaviour
             _position = Position.Moving;
             float startTime = Time.time;
             float endTime = startTime + duration;
-            yield return null;
-            while (Time.time < endTime)
+
+            while (Time.time <= endTime)
             {
                 float progress = (Time.time - startTime) / duration;
 
-                this.transform.rotation = Quaternion.Slerp(headPaperRotation, headPhoneRotation, progress);
+                transform.rotation = Quaternion.Slerp(headPaperRotation, headPhoneRotation, progress);
 
                 phone.transform.rotation = Quaternion.Slerp(phoneDownRot, phoneUpRot, progress);
                 phone.transform.position = Vector3.Slerp(phoneDownPos, phoneUpPos, progress);
+
                 yield return null;
             }
+
+            //Fixes bug with slerp that prevents completion every 1/25 times
+            transform.rotation = headPhoneRotation;
+
+            phone.transform.rotation = phoneUpRot;
+            phone.transform.position = phoneUpPos;
+
+            yield return null;
             _position = Position.Phone;
         }
 
     }
-
     IEnumerator LookAtProfessorCoroutine()
     {
         if (_position == Position.Paper)
@@ -115,67 +122,99 @@ public class HeadMovement : MonoBehaviour
             _position = Position.Moving;
             float startTime = Time.time;
             float endTime = startTime + duration;
-            yield return null;
-            while (Time.time < endTime)
+
+            while (Time.time <= endTime)
             {
                 float progress = (Time.time - startTime) / duration;
-                this.transform.rotation = Quaternion.Slerp(headPaperRotation, headZhangRotation, progress);
+
+                transform.rotation = Quaternion.Slerp(headPaperRotation, headZhangRotation, progress);
+
                 yield return null;
             }
+
+            //Fixes bug with slerp that prevents completion every 1/25 times
+            transform.rotation = headZhangRotation;
+
+            yield return null;
             _position = Position.Professor;
         }
 
     }
     IEnumerator lookAtPaperCoroutine()
     {
+        #region From Phone
         if (_position == Position.Phone)
         {
             _position = Position.Moving;
             float startTime = Time.time;
             float endTime = startTime + duration;
             yield return null;
-            while (Time.time < endTime)
+            while (Time.time <= endTime)
             {
                 float progress = (Time.time - startTime) / duration;
 
-                this.transform.rotation = Quaternion.Slerp(headPhoneRotation, headPaperRotation, progress);
+                transform.rotation = Quaternion.Slerp(headPhoneRotation, headPaperRotation, progress);
 
                 phone.transform.rotation = Quaternion.Slerp(phoneUpRot, phoneDownRot, progress);
                 phone.transform.position = Vector3.Slerp(phoneUpPos, phoneDownPos, progress);
+
                 yield return null;
             }
+
+            //Fixes bug with slerp that prevents completion every 1/25 times
+            transform.rotation = headPaperRotation;
+
+            phone.transform.rotation = phoneDownRot;
+            phone.transform.position = phoneDownPos;
+
+            yield return null;
             _position = Position.Paper;
         }
+        #endregion
 
+        #region From Classmate
         if (_position == Position.Classmate)
         {
             _position = Position.Moving;
             float startTime = Time.time;
             float endTime = startTime + duration;
             yield return null;
-            while (Time.time < endTime)
+            while (Time.time <= endTime)
             {
                 float progress = (Time.time - startTime) / duration;
-                this.transform.rotation = Quaternion.Slerp(headClassRotation, headPaperRotation, progress);
+                transform.rotation = Quaternion.Slerp(headClassRotation, headPaperRotation, progress);
                 yield return null;
             }
+
+            //Fixes bug with slerp that prevents completion every 1/25 times
+            transform.rotation = headPaperRotation;
+
+            yield return null;
             _position = Position.Paper;
         }
+        #endregion
 
+        #region From Professor
         if (_position == Position.Professor)
         {
             _position = Position.Moving;
             float startTime = Time.time;
             float endTime = startTime + duration;
             yield return null;
-            while (Time.time < endTime)
+            while (Time.time <= endTime)
             {
                 float progress = (Time.time - startTime) / duration;
-                this.transform.rotation = Quaternion.Slerp(headZhangRotation, headPaperRotation, progress);
+                transform.rotation = Quaternion.Slerp(headZhangRotation, headPaperRotation, progress);
                 yield return null;
             }
+
+            //Fixes bug with slerp that prevents completion every 1/25 times
+            transform.rotation = headPaperRotation;
+
+            yield return null;
             _position = Position.Paper;
         }
+        #endregion
 
     }
     IEnumerator lookAtClassmateCoroutine()
@@ -186,12 +225,17 @@ public class HeadMovement : MonoBehaviour
             float startTime = Time.time;
             float endTime = startTime + duration;
             yield return null;
-            while (Time.time < endTime)
+            while (Time.time <= endTime)
             {
                 float progress = (Time.time - startTime) / duration;
-                this.transform.rotation = Quaternion.Slerp(headPaperRotation, headClassRotation, progress);
+                transform.rotation = Quaternion.Slerp(headPaperRotation, headClassRotation, progress);
                 yield return null;
             }
+
+            //Fixes bug with slerp that prevents completion every 1/25 times
+            transform.rotation = headClassRotation;
+
+            yield return null;
             _position = Position.Classmate;
         }
     }

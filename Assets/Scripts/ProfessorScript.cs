@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class ProfessorScript : MonoBehaviour
 {
+
+    #region Declarations
+
+    //Timer ranges initialized in editor
     public Vector2 boardWaitRange;
     public Vector2 farToMidRange;
     public Vector2 midToCloseRange;
     public Vector2 closeToDeathRange;
 
+    //Position Coordinates
     private Vector3 boardPostion = new Vector3(-2.8f, 1f, 14.5f);
     private Vector3 boardRotation = new Vector3(0f, -180f, 0f);
     private Vector3 midPostion = new Vector3(-1.5f, 1f, 11f);
@@ -18,26 +23,13 @@ public class ProfessorScript : MonoBehaviour
     private float timerMax;
     public float moveTimer;
 
-    //enum ProfessorPosition { Board, Far, Mid, Close }
-    //private ProfessorPosition _professorPosition;
-    /*
+    #endregion
 
-    Hey I had an idea on how to use this enum field to keep track of his movements easier than all the booleans and float values
-
-    You can use them together for example if( _professorState == Watching && _Position == Phone ) to streamline the checks
-
-    You can also use this to keep track of which timer is going which can cut back on the different coroutines you need
-        EX: use one coroutine to keep track of all time and have the different values based on which state you and the professor are in and compare the two states
-
-    Obviously I know you're smart and I trust your judgement so whatever we end up with is all good
-    Feel free to look through the other script to see how I navigated states and hit me up if you have any questions bc I really enjoy using Enum states
-
-     */
-
+    #region Unity Methods
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("WaitAtBoard");
+        StartCoroutine(GoToBoard());
     }
 
     // Update is called once per frame
@@ -45,11 +37,13 @@ public class ProfessorScript : MonoBehaviour
     {
         Timer();
     }
+    #endregion
 
-    IEnumerator WaitAtBoard()
+    #region Coroutines
+    IEnumerator GoToBoard()
     {
-        print("Board");
-        StopCoroutine("WatchForReset");
+        Debug.Log("Board");
+        StopCoroutine(ResetPosition());
         moving = false;
 
         //Move prof to board
@@ -67,14 +61,15 @@ public class ProfessorScript : MonoBehaviour
         }
 
         //Victimize
-        StartCoroutine("ImGonnaGetYa");
+        StartCoroutine(AttackPlayer());
     }
 
-    IEnumerator ImGonnaGetYa()
+    IEnumerator AttackPlayer()
     {
-        //Move Prof
+        #region Far
+        //Face Player
         transform.eulerAngles = Vector3.zero;
-        print("Far");
+        Debug.Log("Far");
 
         //Set timer
         timerMax = Random.Range(farToMidRange.x, farToMidRange.y);
@@ -82,7 +77,7 @@ public class ProfessorScript : MonoBehaviour
 
         //Start Moving (start timer)
         moving = true;
-        StartCoroutine("WatchForReset");
+        StartCoroutine(ResetPosition());
 
         //Wait for timer
         while (moveTimer > 0)
@@ -95,10 +90,13 @@ public class ProfessorScript : MonoBehaviour
         {
             yield return null;
         }
+        #endregion
 
+        #region Mid
         //Move forward
-        print("Mid");
+        Debug.Log("Mid");
         transform.position = midPostion;
+        //transform.rotation = midRotation;
 
         //Set timer
         timerMax = Random.Range(midToCloseRange.x, midToCloseRange.y);
@@ -115,13 +113,15 @@ public class ProfessorScript : MonoBehaviour
         {
             yield return null;
         }
+        #endregion
 
+        #region Close
         //Move forward
         print("Close");
         transform.position = closePostion;
 
         //Set timer
-        timerMax = Random.Range(midToCloseRange.x, midToCloseRange.y);
+        timerMax = Random.Range(closeToDeathRange.x, closeToDeathRange.y);
         moveTimer = timerMax;
 
         //Wait for timer
@@ -135,16 +135,18 @@ public class ProfessorScript : MonoBehaviour
         {
             yield return null;
         }
+        #endregion
 
-        print("Game Over");
+        //End Game
+        Debug.Log("Game Over");
     }
 
-    IEnumerator WatchForReset()
+    IEnumerator ResetPosition()
     {
         if(HeadMovement._position == HeadMovement.Position.Professor)
         {
             moving = false;
-            StopCoroutine("ImGonnaGetYa");
+            StopCoroutine(AttackPlayer());
 
             //Wait if player is looking 
             while (HeadMovement._position == HeadMovement.Position.Professor || HeadMovement._position == HeadMovement.Position.Moving)
@@ -152,13 +154,16 @@ public class ProfessorScript : MonoBehaviour
                 yield return null;
             }
 
-            StartCoroutine("WaitAtBoard");
+            StartCoroutine(GoToBoard());
         }
 
         yield return null;
-        StartCoroutine("WatchForReset");
+        StartCoroutine(ResetPosition());
     }
 
+#endregion
+
+    #region Methods
     private void Timer()
     {
         if(moving && (HeadMovement._position == HeadMovement.Position.Phone || HeadMovement._position == HeadMovement.Position.Classmate))
@@ -170,4 +175,6 @@ public class ProfessorScript : MonoBehaviour
             moveTimer += Time.deltaTime * 0.5f;
         }
     }
+
+    #endregion
 }

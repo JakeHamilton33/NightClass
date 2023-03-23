@@ -1881,10 +1881,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6c126818b238b498e558c5f62d7caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeIntervalMin: 5
-  timeIntervalMax: 10
-  phoneGracePeriod: 4
-  cheatingGracePeriod: 3
+  boardWaitRange: {x: 5, y: 10}
+  farToMidRange: {x: 4, y: 6}
+  midToCloseRange: {x: 4, y: 6}
+  closeToDeathRange: {x: 1, y: 2}
+  moveTimer: 0
 --- !u!1 &1816582436
 GameObject:
   m_ObjectHideFlags: 0

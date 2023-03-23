@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class ProfessorScript : MonoBehaviour
 {
-    public float timeIntervalMin;
-    public float timeIntervalMax;
-    public float phoneGracePeriod;
-    public float cheatingGracePeriod;
+    public Vector2 boardWaitRange;
+    public Vector2 farToMidRange;
+    public Vector2 midToCloseRange;
+    public Vector2 closeToDeathRange;
 
     private Vector3 boardPostion = new Vector3(-2.8f, 1f, 14.5f);
     private Vector3 boardRotation = new Vector3(0f, -180f, 0f);
     private Vector3 midPostion = new Vector3(-1.5f, 1f, 11f);
     private Vector3 closePostion = new Vector3(-1.37f, 1f, 3.8f);
 
-    private bool watching;
-    private float phoneTimer;
-    private float cheatTimer;
+    private bool moving;
+    private float timerMax;
+    public float moveTimer;
 
-    enum ProfessorPosition { Board, Watching, Classroom, Desk }
+    //enum ProfessorPosition { Board, Far, Mid, Close }
+    //private ProfessorPosition _professorPosition;
     /*
 
     Hey I had an idea on how to use this enum field to keep track of his movements easier than all the booleans and float values
@@ -36,36 +37,33 @@ public class ProfessorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        phoneTimer = phoneGracePeriod;
-        cheatTimer = cheatingGracePeriod;
         StartCoroutine("WaitAtBoard");
     }
 
     // Update is called once per frame
     void Update()
     {
-        WatchForPhone();
-        WatchForCheating();
+        Timer();
     }
 
     IEnumerator WaitAtBoard()
     {
         print("Board");
-        StopCoroutine("Watching");
-        watching = false;
+        StopCoroutine("WatchForReset");
+        moving = false;
 
         //Move prof to board
         transform.position = boardPostion;
         transform.eulerAngles = boardRotation;
 
         //Wait
-        float waitTime = Random.Range(timeIntervalMin, timeIntervalMax);
+        float waitTime = Random.Range(boardWaitRange.x, boardWaitRange.y);
         yield return new WaitForSeconds(waitTime);
 
         //Wait for player to put their head down
         while(HeadMovement._position == HeadMovement.Position.Professor || HeadMovement._position == HeadMovement.Position.Moving)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
 
         //Victimize
@@ -74,97 +72,102 @@ public class ProfessorScript : MonoBehaviour
 
     IEnumerator ImGonnaGetYa()
     {
+        //Move Prof
         transform.eulerAngles = Vector3.zero;
-
-        //Start Watching
         print("Far");
-        StartCoroutine("Watching");
 
-        //Wait
-        yield return new WaitForSeconds(4f);
+        //Set timer
+        timerMax = Random.Range(farToMidRange.x, farToMidRange.y);
+        moveTimer = timerMax;
 
-        //Wait for player to stop moving
+        //Start Moving (start timer)
+        moving = true;
+        StartCoroutine("WatchForReset");
+
+        //Wait for timer
+        while (moveTimer > 0)
+        {
+            yield return null;
+        }
+
+        //Wait if player is looking 
         while (HeadMovement._position == HeadMovement.Position.Professor || HeadMovement._position == HeadMovement.Position.Moving)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
 
         //Move forward
         print("Mid");
         transform.position = midPostion;
 
-        //Wait
-        yield return new WaitForSeconds(4f);
+        //Set timer
+        timerMax = Random.Range(midToCloseRange.x, midToCloseRange.y);
+        moveTimer = timerMax;
 
-        //Wait for player to look at phone
-        while (HeadMovement._position != HeadMovement.Position.Phone)
+        //Wait for timer
+        while (moveTimer > 0)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
+        }
+
+        //Wait if player is looking 
+        while (HeadMovement._position == HeadMovement.Position.Professor || HeadMovement._position == HeadMovement.Position.Moving)
+        {
+            yield return null;
         }
 
         //Move forward
         print("Close");
         transform.position = closePostion;
 
-        //Wait
-        yield return new WaitForSeconds(Random.Range(4f, 7f));
+        //Set timer
+        timerMax = Random.Range(midToCloseRange.x, midToCloseRange.y);
+        moveTimer = timerMax;
 
-        print("Game Over from not watching professor");
+        //Wait for timer
+        while (moveTimer > 0)
+        {
+            yield return null;
+        }
+
+        //Wait if player is looking 
+        while (HeadMovement._position == HeadMovement.Position.Professor || HeadMovement._position == HeadMovement.Position.Moving)
+        {
+            yield return null;
+        }
+
+        print("Game Over");
     }
 
-    IEnumerator Watching()
+    IEnumerator WatchForReset()
     {
-        watching = true;
-        if (HeadMovement._position == HeadMovement.Position.Professor)
+        if(HeadMovement._position == HeadMovement.Position.Professor)
         {
-            //Stop advancing toward player
+            moving = false;
             StopCoroutine("ImGonnaGetYa");
 
-            //wait for player to put head down
-            while (HeadMovement._position == HeadMovement.Position.Moving || HeadMovement._position == HeadMovement.Position.Professor)
+            //Wait if player is looking 
+            while (HeadMovement._position == HeadMovement.Position.Professor || HeadMovement._position == HeadMovement.Position.Moving)
             {
-                yield return new WaitForSeconds(0.1f);
+                yield return null;
             }
 
-            //Start Over
             StartCoroutine("WaitAtBoard");
         }
 
-        yield return new WaitForSeconds(0.1f);
-        StartCoroutine("Watching");
+        yield return null;
+        StartCoroutine("WatchForReset");
     }
 
-    private void WatchForPhone()
+    private void Timer()
     {
-        if(watching && HeadMovement._position == HeadMovement.Position.Phone)
+        if(moving && (HeadMovement._position == HeadMovement.Position.Phone || HeadMovement._position == HeadMovement.Position.Classmate))
         {
-            phoneTimer -= Time.deltaTime;
+            moveTimer -= Time.deltaTime;
         }
-        else
+        else if(moving && HeadMovement._position == HeadMovement.Position.Paper && moveTimer < timerMax)
         {
-            phoneTimer = phoneGracePeriod;
-        }
-
-        if(phoneTimer <= 0)
-        {
-            print("Game Over from Phone");
-        }
-    }
-
-    private void WatchForCheating()
-    {
-        if (watching && HeadMovement._position == HeadMovement.Position.Classmate)
-        {
-            cheatTimer -= Time.deltaTime;
-        }
-        else
-        {
-            cheatTimer = cheatingGracePeriod;
-        }
-
-        if (cheatTimer <= 0)
-        {
-            print("Game Over from cheating");
+            moveTimer += Time.deltaTime * 0.5f;
         }
     }
 }

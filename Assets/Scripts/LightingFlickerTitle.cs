@@ -18,7 +18,7 @@ public class LightingFlickerTitle : MonoBehaviour
     {
         if(isFlashing == true)
         {
-            if (Random.value > 0.98)
+            if (Random.value > 0.97)
             {
                 if (Overhead.enabled == true)
                 {

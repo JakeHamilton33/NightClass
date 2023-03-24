@@ -19,6 +19,10 @@ public class ProfessorScript : MonoBehaviour
     private Vector3 midPostion = new Vector3(-1.5f, 1f, 11f);
     private Vector3 closePostion = new Vector3(-1.37f, 1f, 3.8f);
 
+    //Sound Array
+    public AudioClip[] throatSounds;
+    public AudioSource audioSource;
+
     private bool moving;
     private float timerMax;
     [SerializeField] private float moveTimer;
@@ -74,6 +78,7 @@ public class ProfessorScript : MonoBehaviour
         //Set timer
         timerMax = Random.Range(farToMidRange.x, farToMidRange.y);
         moveTimer = timerMax;
+        
 
         //Start Moving (start timer)
         moving = true;
@@ -96,6 +101,11 @@ public class ProfessorScript : MonoBehaviour
         //Move forward
         Debug.Log("Mid");
         transform.position = midPostion;
+
+        //Play sound
+        audioSource.clip = throatSounds[Random.Range(0, throatSounds.Length)];
+        audioSource.Play();
+
         //transform.rotation = midRotation;
 
         //Set timer

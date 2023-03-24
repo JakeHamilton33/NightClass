@@ -9,26 +9,26 @@ public class HeadMovement : MonoBehaviour
     /* 
     Head:
         Head Paper Rotation : { Quaternion(0.202, 0.0, 0.0, 0.979) }
-        Head Phone Rotation : { Quaternion(0.315, 0.159, -0.054, 0.934) }
+        Head Phone Rotation : { Quaternion(0.318, 0.234, -0.028, 0.918) }
         Head Zhang Rotation : { Quaternion(0.0, -0.165, 0.0, 0.986) }
         Head Class Rotation : { Quaternion(0.086, -0.544, 0.063, 0.833) }
     Phone:
         Phone Default Position: { Vector3(1.6, 0.88, 0.18) }
-        Phone Up Position: {Vector3(0.452, 1.585, 0.099) }
+        Phone Up Position: {Vector3(0.702, 1.585, 0.012) }
 
         Phone Default Rotation: { Quaternion(-0.036, -0.29, -0.34, 0.9) }
-        Phone Up Rotation: { Quaternion(0.186, -0.549, -0.261, 0.772) }
+        Phone Up Rotation: { Quaternion(0.205, -0.49, -0.246, 0.811) }
     */
     private Quaternion headPaperRotation = new Quaternion(0.202f, 0.0f, 0.0f, 0.979f);
-    private Quaternion headPhoneRotation = new Quaternion(0.315f, 0.159f, -0.054f, 0.934f);
+    private Quaternion headPhoneRotation = new Quaternion(0.318f, 0.234f, -0.028f, 0.918f);
     private Quaternion headZhangRotation = new Quaternion(0.0f, -0.083f, 0.0f, 0.986f);
     private Quaternion headClassRotation = new Quaternion(0.086f, -0.544f, 0.063f, 0.833f);
 
     private Vector3 phoneDownPos = new Vector3(1.6f, 0.88f, 0.18f);
     private Quaternion phoneDownRot = new Quaternion(-0.036f, -0.29f, -0.34f, 0.9f);
 
-    private Vector3 phoneUpPos = new Vector3(0.452f, 1.585f, 0.099f);
-    private Quaternion phoneUpRot = new Quaternion(0.186f, -0.549f, -0.261f, 0.772f);
+    private Vector3 phoneUpPos = new Vector3(0.702f, 1.585f, 0.012f);
+    private Quaternion phoneUpRot = new Quaternion(0.205f, -0.49f, -0.246f, 0.811f);
 
     #endregion
 

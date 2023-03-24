@@ -6,6 +6,7 @@ public class LightingFlickerTitle : MonoBehaviour
 {
     public Light Overhead;
     public Light Spotlight;
+    public AudioSource lightSound;
     private bool isFlashing;
 
     private void Start()
@@ -24,11 +25,13 @@ public class LightingFlickerTitle : MonoBehaviour
                 {
                     Overhead.enabled = false;
                     Spotlight.enabled = false;
+                    lightSound.Stop();
                 }
                 else
                 {
                     Overhead.enabled = true;
                     Spotlight.enabled = true;
+                    lightSound.Play();
                 }
             }
         }
@@ -47,6 +50,7 @@ public class LightingFlickerTitle : MonoBehaviour
         isFlashing = false;
         Overhead.enabled = true;
         Spotlight.enabled = true;
+        lightSound.Play();
 
         yield return new WaitForSeconds(3f);
         StartCoroutine(FlickerCorotine());

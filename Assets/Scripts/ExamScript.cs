@@ -1,17 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ExamScript : MonoBehaviour
 {
+    #region Declarations
+    private string[] questions;
+    private string[] answers;
+
     private int currentQuestion = 1;
     private string currentQuestionString = "Question1";
 
-    public Button answerButtonA, answerButtonB, answerButtonC, answerButtonD;
+    public TextMeshPro QuestionField;
+    [Header("Buttons")]
+    public Button answerButtonA;
+    public Button answerButtonB, answerButtonC, answerButtonD;
 
-    public Sprite answerA, answerACircled, answerB, answerBCircled, answerC, answerCCircled, answerD, answerDCircled;
+    [Header("Sprites for answers")]
+    public Sprite optionA;
+    public Sprite optionASelected, optionB, optionBSelected, optionC, optionCSelected, optionD, optionDSelected;
 
+    #endregion
+
+    #region Unity Methods
     private void Awake()
     {
         //Delete all answers
@@ -19,23 +32,21 @@ public class ExamScript : MonoBehaviour
 
         /*
         Grab generated test questions and answers
-        
-        string[] questions = new string[10];
-
-        //answers are stored as int values 1-4
-        int[] answers = new int[10];
 
         questions = GenerateTest.instance.GetQuestions();
-        answers = GenerateTest.instance.GetAnswers(); 
+        answers = GenerateTest.instance.GetAnswers(currentQuestion); 
         */
     }
+    #endregion
+
+    #region Button Handling
     public void AnswerA()
     {
         //Update Sprites
-        answerButtonA.image.sprite = answerACircled;
-        answerButtonB.image.sprite = answerB;
-        answerButtonC.image.sprite = answerC;
-        answerButtonD.image.sprite = answerD;
+        answerButtonA.image.sprite = optionASelected;
+        answerButtonB.image.sprite = optionB;
+        answerButtonC.image.sprite = optionC;
+        answerButtonD.image.sprite = optionD;
 
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 1);
@@ -43,10 +54,10 @@ public class ExamScript : MonoBehaviour
     public void AnswerB()
     {
         //Update Sprites
-        answerButtonA.image.sprite = answerACircled;
-        answerButtonB.image.sprite = answerB;
-        answerButtonC.image.sprite = answerC;
-        answerButtonD.image.sprite = answerD;
+        answerButtonA.image.sprite = optionA;
+        answerButtonB.image.sprite = optionBSelected;
+        answerButtonC.image.sprite = optionC;
+        answerButtonD.image.sprite = optionD;
 
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 1);
@@ -54,10 +65,10 @@ public class ExamScript : MonoBehaviour
     public void AnswerC()
     {
         //Update Sprites
-        answerButtonA.image.sprite = answerACircled;
-        answerButtonB.image.sprite = answerB;
-        answerButtonC.image.sprite = answerC;
-        answerButtonD.image.sprite = answerD;
+        answerButtonA.image.sprite = optionA;
+        answerButtonB.image.sprite = optionB;
+        answerButtonC.image.sprite = optionCSelected;
+        answerButtonD.image.sprite = optionD;
 
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 1);
@@ -65,10 +76,10 @@ public class ExamScript : MonoBehaviour
     public void AnswerD()
     {
         //Update Sprites
-        answerButtonA.image.sprite = answerACircled;
-        answerButtonB.image.sprite = answerB;
-        answerButtonC.image.sprite = answerC;
-        answerButtonD.image.sprite = answerD;
+        answerButtonA.image.sprite = optionA;
+        answerButtonB.image.sprite = optionB;
+        answerButtonC.image.sprite = optionC;
+        answerButtonD.image.sprite = optionDSelected;
 
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 1);
@@ -76,15 +87,25 @@ public class ExamScript : MonoBehaviour
     public void NextQuestion()
     {
         //Set all buttons to uncircled sprites
-        answerButtonA.image.sprite = answerA;
-        answerButtonB.image.sprite = answerB;
-        answerButtonC.image.sprite = answerC;
-        answerButtonD.image.sprite = answerD;
+        answerButtonA.image.sprite = optionA;
+        answerButtonB.image.sprite = optionB;
+        answerButtonC.image.sprite = optionC;
+        answerButtonD.image.sprite = optionD;
 
         Debug.Log(currentQuestionString + ": " + PlayerPrefs.GetInt(currentQuestionString));
         currentQuestion++;
         currentQuestionString = "Question" + currentQuestion;
-
         //Load Next Question
+        /*
+        questionField.text = questions[currentQuestion-1];
+        answers = GenerateTest.instance.GetAnswers(currentQuestion);
+
+        answerButtonA.text = answers[0];
+        answerButtonB.text = answers[1];
+        answerButtonC.text = answers[2];
+        answerButtonD.text = answers[3];
+
+        */
     }
+    #endregion
 }

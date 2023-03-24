@@ -994,11 +994,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dcd794f9c385d4fa6517a26409d8ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answerButtons:
-  - {fileID: 1953088208}
-  - {fileID: 1015540738}
-  - {fileID: 1013096592}
-  - {fileID: 1883680454}
+  QuestionField: {fileID: 1776054063}
+  answerButtonA: {fileID: 1953088208}
+  answerButtonB: {fileID: 1015540738}
+  answerButtonC: {fileID: 1013096592}
+  answerButtonD: {fileID: 1883680454}
+  optionA: {fileID: 0}
+  optionASelected: {fileID: 0}
+  optionB: {fileID: 0}
+  optionBSelected: {fileID: 0}
+  optionC: {fileID: 0}
+  optionCSelected: {fileID: 0}
+  optionD: {fileID: 0}
+  optionDSelected: {fileID: 0}
 --- !u!114 &362584417
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,41 +14,77 @@ public class ClickObject : MonoBehaviour
         #region Return Clicked App
         if (Input.GetMouseButtonDown(0))
         {
-            if(apps[0] == getClickedObject(out RaycastHit hit1))
+            GameObject clickedObject = getClickedObject(out _);
+
+            if(clickedObject == apps[0])
             {
-                print("clicked app1");
+                PhoneScript._website = PhoneScript.WebsiteState.Website1;
+                PhoneScript.instance.StateChange();
+
+                HeadMovement._position = HeadMovement.Position.Website;
             }
-            if (apps[1] == getClickedObject(out RaycastHit hit2))
+            if (clickedObject == apps[1])
             {
-                print("clicked app2");
+                PhoneScript._website = PhoneScript.WebsiteState.Website2;
+                PhoneScript.instance.StateChange();
+
+                HeadMovement._position = HeadMovement.Position.Website;
             }
-            if (apps[2] == getClickedObject(out RaycastHit hit3))
+            if (clickedObject == apps[2])
             {
-                print("clicked app3");
+                PhoneScript._website = PhoneScript.WebsiteState.Website3;
+                PhoneScript.instance.StateChange();
+
+                HeadMovement._position = HeadMovement.Position.Website;
             }
-            if (apps[3] == getClickedObject(out RaycastHit hit4))
+            if (clickedObject == apps[3])
             {
-                print("clicked app4");
+                PhoneScript._website = PhoneScript.WebsiteState.Website4;
+                PhoneScript.instance.StateChange();
+
+                HeadMovement._position = HeadMovement.Position.Website;
             }
-            if (apps[4] == getClickedObject(out RaycastHit hit5))
+            if (clickedObject == apps[4])
             {
-                print("clicked app5");
+                PhoneScript._website = PhoneScript.WebsiteState.Website5;
+                PhoneScript.instance.StateChange();
+
+                HeadMovement._position = HeadMovement.Position.Website;
             }
-            if (apps[5] == getClickedObject(out RaycastHit hit6))
+            if (clickedObject == apps[5])
             {
-                print("clicked app6");
+                PhoneScript._website = PhoneScript.WebsiteState.Website6;
+                PhoneScript.instance.StateChange();
+
+                HeadMovement._position = HeadMovement.Position.Website;
             }
-            if (apps[6] == getClickedObject(out RaycastHit hit7))
+            if (clickedObject == apps[6])
             {
-                print("clicked app7");
+                PhoneScript._website = PhoneScript.WebsiteState.Website7;
+                PhoneScript.instance.StateChange();
+
+                HeadMovement._position = HeadMovement.Position.Website;
             }
-            if (apps[7] == getClickedObject(out RaycastHit hit8))
+            if (clickedObject == apps[7])
             {
-                print("clicked app8");
+                PhoneScript._website = PhoneScript.WebsiteState.Website8;
+                PhoneScript.instance.StateChange();
+
+                HeadMovement._position = HeadMovement.Position.Website;
             }
-            if (apps[8] == getClickedObject(out RaycastHit hit9))
+            if (clickedObject == apps[8])
             {
-                print("clicked app9");
+                PhoneScript._website = PhoneScript.WebsiteState.Website9;
+                PhoneScript.instance.StateChange();
+
+                HeadMovement._position = HeadMovement.Position.Website;
+            }
+            if (clickedObject == apps[9])
+            {
+                PhoneScript._website = PhoneScript.WebsiteState.Selecting;
+                PhoneScript.instance.StateChange();
+
+                HeadMovement._position = HeadMovement.Position.Phone;
             }
         }
         #endregion

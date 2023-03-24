@@ -34,7 +34,7 @@ public class HeadMovement : MonoBehaviour
 
     #region Declarations
     //Made _position public static so it can be shared between scripts
-    public enum Position { Paper, Professor, Phone, Classmate, Moving}
+    public enum Position { Paper, Professor, Phone, Classmate, Moving, Website}
     public static Position _position = Position.Paper;
 
     public GameObject player, phone, mainCamera;
@@ -78,6 +78,10 @@ public class HeadMovement : MonoBehaviour
         if(_position == Position.Paper)
         {
             StartCoroutine(LookAtProfessorCoroutine());
+        }
+        if(_position == Position.Website)
+        {
+            StartCoroutine(lookAtPaperCoroutine());
         }
     }
 
@@ -143,6 +147,12 @@ public class HeadMovement : MonoBehaviour
     IEnumerator lookAtPaperCoroutine()
     {
         #region From Phone
+        if(_position == Position.Website)
+        {
+            PhoneScript.instance.SendBack();
+            _position = Position.Phone;
+        }
+
         if (_position == Position.Phone)
         {
             _position = Position.Moving;

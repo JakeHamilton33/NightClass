@@ -42,55 +42,60 @@ public class ExamScript : MonoBehaviour
     #region Button Handling
     public void AnswerA()
     {
+        Debug.Log("Pressed A");
         //Update Sprites
+        /*
         answerButtonA.image.sprite = optionASelected;
         answerButtonB.image.sprite = optionB;
         answerButtonC.image.sprite = optionC;
         answerButtonD.image.sprite = optionD;
-
+        */
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 1);
     }
     public void AnswerB()
     {
+        Debug.Log("Pressed B");
         //Update Sprites
-        answerButtonA.image.sprite = optionA;
-        answerButtonB.image.sprite = optionBSelected;
-        answerButtonC.image.sprite = optionC;
-        answerButtonD.image.sprite = optionD;
+        //answerButtonA.image.sprite = optionA;
+        //answerButtonB.image.sprite = optionBSelected;
+        //answerButtonC.image.sprite = optionC;
+        //answerButtonD.image.sprite = optionD;
 
         //Store Answer
-        PlayerPrefs.SetInt(currentQuestionString, 1);
+        PlayerPrefs.SetInt(currentQuestionString, 2);
     }
     public void AnswerC()
     {
+        Debug.Log("Pressed C");
         //Update Sprites
-        answerButtonA.image.sprite = optionA;
-        answerButtonB.image.sprite = optionB;
-        answerButtonC.image.sprite = optionCSelected;
-        answerButtonD.image.sprite = optionD;
+        //answerButtonA.image.sprite = optionA;
+        //answerButtonB.image.sprite = optionB;
+        //answerButtonC.image.sprite = optionCSelected;
+        //answerButtonD.image.sprite = optionD;
 
         //Store Answer
-        PlayerPrefs.SetInt(currentQuestionString, 1);
+        PlayerPrefs.SetInt(currentQuestionString, 3);
     }
     public void AnswerD()
     {
+        Debug.Log("Pressed D");
         //Update Sprites
-        answerButtonA.image.sprite = optionA;
-        answerButtonB.image.sprite = optionB;
-        answerButtonC.image.sprite = optionC;
-        answerButtonD.image.sprite = optionDSelected;
+        //answerButtonA.image.sprite = optionA;
+        //answerButtonB.image.sprite = optionB;
+        //answerButtonC.image.sprite = optionC;
+        //answerButtonD.image.sprite = optionDSelected;
 
         //Store Answer
-        PlayerPrefs.SetInt(currentQuestionString, 1);
+        PlayerPrefs.SetInt(currentQuestionString, 4);
     }
     public void NextQuestion()
     {
         //Set all buttons to uncircled sprites
-        answerButtonA.image.sprite = optionA;
-        answerButtonB.image.sprite = optionB;
-        answerButtonC.image.sprite = optionC;
-        answerButtonD.image.sprite = optionD;
+        //answerButtonA.image.sprite = optionA;
+        //answerButtonB.image.sprite = optionB;
+        //answerButtonC.image.sprite = optionC;
+        //answerButtonD.image.sprite = optionD;
 
         Debug.Log(currentQuestionString + ": " + PlayerPrefs.GetInt(currentQuestionString));
         currentQuestion++;

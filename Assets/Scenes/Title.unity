@@ -287,6 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f344ab0598a520469d5d1c5791a6cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BeginFloat: 10
+  StopFlickerFloat: 3
   Overhead: {fileID: 1961302355}
   Spotlight: {fileID: 2089199967}
   lightSound: {fileID: 272361532}

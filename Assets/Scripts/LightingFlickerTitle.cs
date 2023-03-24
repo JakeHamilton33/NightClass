@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LightingFlickerTitle : MonoBehaviour
 {
+    public float BeginFloat;
+    public float StopFlickerFloat;
     public Light Overhead;
     public Light Spotlight;
     public AudioSource lightSound;
@@ -41,7 +43,7 @@ public class LightingFlickerTitle : MonoBehaviour
     {
         isFlashing = true;
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(BeginFloat);
         StartCoroutine(BeginFlicker());
     }
 
@@ -52,7 +54,7 @@ public class LightingFlickerTitle : MonoBehaviour
         Spotlight.enabled = true;
         lightSound.Play();
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(StopFlickerFloat);
         StartCoroutine(FlickerCorotine());
     }
 }

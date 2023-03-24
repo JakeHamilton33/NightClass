@@ -238,7 +238,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -167906427434553992, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 5f998aaf6b5b82f499aa5871bb345cac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -321,9 +321,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
-  - {fileID: -1580535799172915004, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
-  - {fileID: -9207651423526423346, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 561b0c84b918c6d4bb6c184c634beb75, type: 2}
+  - {fileID: 2100000, guid: 5f998aaf6b5b82f499aa5871bb345cac, type: 2}
+  - {fileID: 2100000, guid: 470259238b328864db9dd57d27c488c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 8269441367606636359}
   - component: {fileID: 4966429943454398302}
   m_Layer: 0
-  m_Name: Cube.010
+  m_Name: Floor Tiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,7 +406,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 257e3d7801f9a0643b2c444682c6fdf7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 5598079465955646663}
   - component: {fileID: 6777888440533171399}
   m_Layer: 0
-  m_Name: Cylinder.002
+  m_Name: Player Desk Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -489,7 +489,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7490952440742008943, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 561b0c84b918c6d4bb6c184c634beb75, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 5292768011827427462}
   - component: {fileID: 1830112361281486970}
   m_Layer: 0
-  m_Name: Cube.004
+  m_Name: Classmate Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -666,7 +666,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 470259238b328864db9dd57d27c488c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 5169447952243230487}
   - component: {fileID: 5107060356387227970}
   m_Layer: 0
-  m_Name: Cube.003
+  m_Name: Player Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -749,7 +749,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 470259238b328864db9dd57d27c488c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 6455543452761755993}
   - component: {fileID: 7324651799092118854}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Lightbulb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1055,7 +1055,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 120078437653008990, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 04da592c5c22ee542a2712645a50365e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 796410115822268461}
   - component: {fileID: 5776723927466412166}
   m_Layer: 0
-  m_Name: Cylinder.001
+  m_Name: Classmate Desk Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1138,7 +1138,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7490952440742008943, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 561b0c84b918c6d4bb6c184c634beb75, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1172,7 +1172,7 @@ GameObject:
   - component: {fileID: 2003152645311696876}
   - component: {fileID: 4944886226408867825}
   m_Layer: 0
-  m_Name: Cube.002
+  m_Name: Whiteboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1221,8 +1221,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5467689353196947229, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
-  - {fileID: 7490952440742008943, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 7bb44579e52485446a083ea8d113039a, type: 2}
+  - {fileID: 2100000, guid: 561b0c84b918c6d4bb6c184c634beb75, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 5294723530038042430}
   - component: {fileID: 8040834478038984691}
   m_Layer: 0
-  m_Name: Cube.006
+  m_Name: Classmate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1339,7 +1339,7 @@ GameObject:
   - component: {fileID: 2715506776566655701}
   - component: {fileID: 4790592880421355399}
   m_Layer: 0
-  m_Name: Cube.007
+  m_Name: Player Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1388,8 +1388,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -167906427434553992, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
-  - {fileID: -4770390735465466038, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 5f998aaf6b5b82f499aa5871bb345cac, type: 2}
+  - {fileID: 2100000, guid: 7b5634ab0885715418cda63c66af4f27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1423,7 +1423,7 @@ GameObject:
   - component: {fileID: 3528315242405094595}
   - component: {fileID: 2858520540595596049}
   m_Layer: 0
-  m_Name: Cube.009
+  m_Name: Classmate Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1472,8 +1472,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -167906427434553992, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
-  - {fileID: -4770390735465466038, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 5f998aaf6b5b82f499aa5871bb345cac, type: 2}
+  - {fileID: 2100000, guid: 7b5634ab0885715418cda63c66af4f27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1556,10 +1556,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2653651044934150266, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
-  - {fileID: -4318571312361772713, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
-  - {fileID: -1580535799172915004, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
-  - {fileID: 7887842766931177552, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: dacbe83f602791441beca498f87e6f0d, type: 2}
+  - {fileID: 2100000, guid: c97785bb5f464f94a88158bcf8b92fe6, type: 2}
+  - {fileID: 2100000, guid: 8ef676f4a5472ce4ca5072f1457808f0, type: 2}
+  - {fileID: 2100000, guid: 2025e2ee28f438c44beb3a4a82741c0a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1642,10 +1642,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2653651044934150266, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
-  - {fileID: -4318571312361772713, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
-  - {fileID: -1580535799172915004, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
-  - {fileID: 7887842766931177552, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: dacbe83f602791441beca498f87e6f0d, type: 2}
+  - {fileID: 2100000, guid: c97785bb5f464f94a88158bcf8b92fe6, type: 2}
+  - {fileID: 2100000, guid: 8ef676f4a5472ce4ca5072f1457808f0, type: 2}
+  - {fileID: 2100000, guid: 2025e2ee28f438c44beb3a4a82741c0a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1822,7 +1822,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4770390735465466038, guid: 45acf0d6755e24447a2025cc5cbe76a0, type: 3}
+  - {fileID: 2100000, guid: 7b5634ab0885715418cda63c66af4f27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

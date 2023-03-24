@@ -12,7 +12,7 @@ public class PhoneScript : MonoBehaviour
     public static WebsiteState _website;
 
     //[SerializeField] private GameObject[] cameras;
-    [SerializeField] private GameObject[] websites;
+    public GameObject[] websites;
     private int currentWebsite;
     [SerializeField] private GameObject HomeButton;
 

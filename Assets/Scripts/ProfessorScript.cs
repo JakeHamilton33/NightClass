@@ -21,7 +21,7 @@ public class ProfessorScript : MonoBehaviour
 
     private bool moving;
     private float timerMax;
-    public float moveTimer;
+    [SerializeField] private float moveTimer;
 
     #endregion
 

@@ -25,7 +25,6 @@ public class ExamScript : MonoBehaviour
     #region Unity Methods
     private void Awake()
     {
-
         //Grab generated test questions and answers
         questions = GenerateTest.instance.questions;
 

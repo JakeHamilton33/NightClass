@@ -16,9 +16,9 @@ public class ExamScript : MonoBehaviour
     public Button answerButtonA;
     public Button answerButtonB, answerButtonC, answerButtonD;
 
-    [Header("Sprites for answers")]
-    public Sprite optionA;
-    public Sprite optionASelected, optionB, optionBSelected, optionC, optionCSelected, optionD, optionDSelected;
+    [Header("Circle Image")]
+    public GameObject optionA;
+    public GameObject optionB, optionC, optionD;
 
     #endregion
 
@@ -37,49 +37,45 @@ public class ExamScript : MonoBehaviour
     #region Button Handling
     public void AnswerA()
     {
-        Debug.Log("Pressed A");
         //Update Sprites
-        /*
-        answerButtonA.image.sprite = optionASelected;
-        answerButtonB.image.sprite = optionB;
-        answerButtonC.image.sprite = optionC;
-        answerButtonD.image.sprite = optionD;
-        */
+        optionA.SetActive(true);
+        optionB.SetActive(false);
+        optionC.SetActive(false);
+        optionD.SetActive(false);
+
+
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 0);
     }
     public void AnswerB()
     {
-        Debug.Log("Pressed B");
         //Update Sprites
-        //answerButtonA.image.sprite = optionA;
-        //answerButtonB.image.sprite = optionBSelected;
-        //answerButtonC.image.sprite = optionC;
-        //answerButtonD.image.sprite = optionD;
+        optionA.SetActive(false);
+        optionB.SetActive(true);
+        optionC.SetActive(false);
+        optionD.SetActive(false);
 
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 1);
     }
     public void AnswerC()
     {
-        Debug.Log("Pressed C");
         //Update Sprites
-        //answerButtonA.image.sprite = optionA;
-        //answerButtonB.image.sprite = optionB;
-        //answerButtonC.image.sprite = optionCSelected;
-        //answerButtonD.image.sprite = optionD;
+        optionA.SetActive(false);
+        optionB.SetActive(false);
+        optionC.SetActive(true);
+        optionD.SetActive(false);
 
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 2);
     }
     public void AnswerD()
     {
-        Debug.Log("Pressed D");
         //Update Sprites
-        //answerButtonA.image.sprite = optionA;
-        //answerButtonB.image.sprite = optionB;
-        //answerButtonC.image.sprite = optionC;
-        //answerButtonD.image.sprite = optionDSelected;
+        optionA.SetActive(false);
+        optionB.SetActive(false);
+        optionC.SetActive(false);
+        optionD.SetActive(true);
 
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 3);
@@ -91,12 +87,11 @@ public class ExamScript : MonoBehaviour
             if(currentQuestion < 10)
             {
                 //Set all buttons to uncircled sprites
-                //answerButtonA.image.sprite = optionA;
-                //answerButtonB.image.sprite = optionB;
-                //answerButtonC.image.sprite = optionC;
-                //answerButtonD.image.sprite = optionD;
+                optionA.SetActive(false);
+                optionB.SetActive(false);
+                optionC.SetActive(false);
+                optionD.SetActive(false);
 
-                Debug.Log(currentQuestionString + ": " + PlayerPrefs.GetInt(currentQuestionString));
                 currentQuestion++;
                 currentQuestionString = "Question" + currentQuestion;
                 PlayerPrefs.SetInt(currentQuestionString, 5);
@@ -105,7 +100,6 @@ public class ExamScript : MonoBehaviour
             }
             else if(currentQuestion == 10)
             {
-                Debug.Log(currentQuestionString + ": " + PlayerPrefs.GetInt(currentQuestionString));
                 PlayerPrefs.SetInt("Caught", 0);
                 PhoneScript.instance.EndGame();
 

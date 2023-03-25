@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GenerateTest : MonoBehaviour
 {
     public static GenerateTest instance;
-    
+
     public List<Question> questions = new List<Question>();
     public TextAsset peopleFile;
     public TextAsset placesFile;
@@ -19,6 +20,7 @@ public class GenerateTest : MonoBehaviour
 
     public TMP_Text[] phoneTexts;
 
+    [SerializeField] private Image[] buttons;
     private GameObject[] phones;
     private string[] names;
     private string[] places;
@@ -146,6 +148,7 @@ public class GenerateTest : MonoBehaviour
         //Generate which question will be on the neighbors test and set it
         int testidx = Random.Range(0, 10);
         SetTestText(phones[10], questions[testidx], testidx + 1);
+        buttons[questions[testidx].answer].color = Color.yellow;
 
         //Generate a randomly shuffled array containing each index of the questions
         int[] randomArray = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };

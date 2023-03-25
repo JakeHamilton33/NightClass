@@ -204,6 +204,8 @@ public class Question
 
     public string GetArticle()
     {
-        return articlePreAnswer + options[answer] + articlePostAnswer;
+        string article = articlePreAnswer + options[answer] + articlePostAnswer;
+        article = article.Replace("\r", "");
+        return article;
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HeadMovement : MonoBehaviour
 {
-
     #region Stored Coordinates
     /* 
     Head:
@@ -12,6 +11,7 @@ public class HeadMovement : MonoBehaviour
         Head Phone Rotation : { Quaternion(0.318, 0.234, -0.028, 0.918) }
         Head Zhang Rotation : { Quaternion(0.0, -0.165, 0.0, 0.986) }
         Head Class Rotation : { Quaternion(0.086, -0.544, 0.063, 0.833) }
+        Head Cauht Rotation : { Quaternion(-0.037, -0.159, -0.006, 0.987) }
     Phone:
         Phone Default Position: { Vector3(1.6, 0.88, 0.18) }
         Phone Up Position: {Vector3(0.702, 1.585, 0.012) }
@@ -23,6 +23,7 @@ public class HeadMovement : MonoBehaviour
     private Quaternion headPhoneRotation = new Quaternion(0.318f, 0.234f, -0.028f, 0.918f);
     private Quaternion headZhangRotation = new Quaternion(0.0f, -0.083f, 0.0f, 0.986f);
     private Quaternion headClassRotation = new Quaternion(0.086f, -0.544f, 0.063f, 0.833f);
+    private Quaternion headCaughtRotation = new Quaternion(-0.037f, -0.159f, -0.006f, 0.987f);
 
     private Vector3 phoneDownPos = new Vector3(1.6f, 0.88f, 0.18f);
     private Quaternion phoneDownRot = new Quaternion(-0.036f, -0.29f, -0.34f, 0.9f);
@@ -35,7 +36,7 @@ public class HeadMovement : MonoBehaviour
     #region Declarations
     //Made _position public static so it can be shared between scripts
     public enum Position { Paper, Professor, Phone, Classmate, Moving, Website, Caught}
-    public static Position _position = Position.Paper;
+    public static Position _position;
 
     public GameObject player, phone, mainCamera;
     private float duration = 0.7f;
@@ -43,6 +44,10 @@ public class HeadMovement : MonoBehaviour
     #endregion
 
     #region Methods
+    private void Awake()
+    {
+        _position = Position.Paper;
+    }
     public void lookDown()
     {
         if(_position == Position.Professor)
@@ -83,6 +88,27 @@ public class HeadMovement : MonoBehaviour
         {
             StartCoroutine(lookAtPaperCoroutine());
         }
+    }
+
+    public Quaternion getCurrentPosition()
+    {
+        switch (_position)
+        {
+            case Position.Phone:
+                {
+                    return headPhoneRotation;
+                }
+            case Position.Classmate:
+                {
+                    return headClassRotation;
+                }
+        }
+        return new Quaternion(0f, 0f, 0f, 0f);
+    }
+
+    public void Caught()
+    {
+        StartCoroutine(CaughtCoroutine());
     }
 
     #endregion
@@ -248,6 +274,27 @@ public class HeadMovement : MonoBehaviour
             yield return null;
             _position = Position.Classmate;
         }
+    }
+
+    IEnumerator CaughtCoroutine()
+    {
+        Quaternion currentPosition = getCurrentPosition();
+        _position = Position.Moving;
+        float startTime = Time.time;
+        float endTime = startTime + duration;
+        yield return null;
+        while (Time.time <= endTime)
+        {
+            float progress = (Time.time - startTime) / duration;
+            transform.rotation = Quaternion.Slerp(currentPosition, headCaughtRotation, progress);
+            yield return null;
+        }
+
+        transform.rotation = headCaughtRotation;
+        yield return null;
+        _position = Position.Caught;
+
+        PhoneScript.instance.EndGame();
     }
 
     #endregion

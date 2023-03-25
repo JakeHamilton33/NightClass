@@ -29,10 +29,12 @@ public class ExamScript : MonoBehaviour
     private void Awake()
     {
         //Grab generated test questions and answers
-        questions = GenerateTest.instance.questions;
-
-        GenerateTest.instance.SetTestText(gameObject, questions[currentQuestion-1], currentQuestion);
         PlayerPrefs.SetInt(currentQuestionString, 5);
+    }
+    private void Start()
+    {
+        questions = GenerateTest.instance.questions;
+        GenerateTest.instance.SetTestText(gameObject, questions[currentQuestion - 1], currentQuestion);
     }
     #endregion
 
@@ -46,7 +48,7 @@ public class ExamScript : MonoBehaviour
         optionD.SetActive(false);
 
         //Play sound
-        audioSource.clip = pencilSounds[Random.Range(0, pencilSounds.Length - 1)];
+        audioSource.clip = pencilSounds[Random.Range(0, pencilSounds.Length)];
         audioSource.Play();
 
         //Store Answer
@@ -76,7 +78,7 @@ public class ExamScript : MonoBehaviour
         optionD.SetActive(false);
 
         //Play sound
-        audioSource.clip = pencilSounds[Random.Range(0, pencilSounds.Length - 1)];
+        audioSource.clip = pencilSounds[Random.Range(0, pencilSounds.Length)];
         audioSource.Play();
 
         //Store Answer
@@ -91,7 +93,7 @@ public class ExamScript : MonoBehaviour
         optionD.SetActive(true);
 
         //Play sound
-        audioSource.clip = pencilSounds[Random.Range(0, pencilSounds.Length - 1)];
+        audioSource.clip = pencilSounds[Random.Range(0, pencilSounds.Length)];
         audioSource.Play();
 
         //Store Answer

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ProfessorScript : MonoBehaviour
 {
-
     #region Declarations
 
     //Timer ranges initialized in editor
@@ -26,6 +25,8 @@ public class ProfessorScript : MonoBehaviour
     private bool moving;
     private float timerMax;
     [SerializeField] private float moveTimer;
+
+    public GameObject head;
 
     #endregion
 
@@ -148,9 +149,8 @@ public class ProfessorScript : MonoBehaviour
         #endregion
 
         //End Game
-        HeadMovement._position = HeadMovement.Position.Caught;
         PlayerPrefs.SetInt("Caught", 1);
-        PhoneScript.instance.EndGame();
+        head.GetComponent<HeadMovement>().Caught();
     }
 
     IEnumerator ResetPosition()

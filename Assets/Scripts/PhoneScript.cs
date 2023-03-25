@@ -25,14 +25,17 @@ public class PhoneScript : MonoBehaviour
     #region Unity Methods
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
 
         _website = WebsiteState.Selecting;
         currentWebsite = 0;
         timer = 450;
+    }
+    void Start()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
     private void Update()
     {

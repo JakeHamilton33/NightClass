@@ -7600,6 +7600,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2ec94de590e3d9b478750ae76d397fea, type: 3}
   audioSource: {fileID: 1686850265}
   moveTimer: 0
+  head: {fileID: 1816582436}
 --- !u!1 &1789744454
 GameObject:
   m_ObjectHideFlags: 0
@@ -12200,11 +12201,11 @@ MonoBehaviour:
   peopleFile: {fileID: 4900000, guid: 0d3c37fc16314324e8b47e79c87bdc16, type: 3}
   placesFile: {fileID: 4900000, guid: faa36eb4b8c16fa4fa717b255114e709, type: 3}
   DateQsFile: {fileID: 4900000, guid: 721d0db5dd255fc4c94ab55c1f64cb11, type: 3}
-  PeopleQsFile: {fileID: 4900000, guid: bfe59df802979ba4ea6ef5712f15f2b6, type: 3}
-  PlaceQsFile: {fileID: 4900000, guid: bfe59df802979ba4ea6ef5712f15f2b6, type: 3}
+  PeopleQsFile: {fileID: 4900000, guid: c2c2497ce6be99c43be866e3a52922ee, type: 3}
+  PlaceQsFile: {fileID: 4900000, guid: d34724cfd60bbd14ea25f96571f25b89, type: 3}
   DateAsFile: {fileID: 4900000, guid: 358e8c48d0b14894c89ecfb16b2f1ae1, type: 3}
-  PeopleAsFile: {fileID: 4900000, guid: bfe59df802979ba4ea6ef5712f15f2b6, type: 3}
-  PlaceAsFile: {fileID: 4900000, guid: bfe59df802979ba4ea6ef5712f15f2b6, type: 3}
+  PeopleAsFile: {fileID: 4900000, guid: 8f8397070b680fb4ea4224207e1032a5, type: 3}
+  PlaceAsFile: {fileID: 4900000, guid: ec0248119a71d684a83902989a8a81dd, type: 3}
   phoneTexts:
   - {fileID: 82422736}
   - {fileID: 1734412896}

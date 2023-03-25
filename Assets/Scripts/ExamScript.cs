@@ -7,9 +7,7 @@ using UnityEngine.UI;
 public class ExamScript : MonoBehaviour
 {
     #region Declarations
-    private string[] questions;
-    private string[] answers;
-
+    private List<Question> questions;
     private int currentQuestion = 1;
     private string currentQuestionString = "Question1";
 
@@ -30,12 +28,10 @@ public class ExamScript : MonoBehaviour
         //Delete all answers
         PlayerPrefs.DeleteAll();
 
-        /*
-        Grab generated test questions and answers
+        //Grab generated test questions and answers
+        questions = GenerateTest.instance.questions;
 
-        questions = GenerateTest.instance.GetQuestions();
-        answers = GenerateTest.instance.GetAnswers(currentQuestion); 
-        */
+        GenerateTest.instance.SetTestText(gameObject, questions[0], 1);
     }
     #endregion
 

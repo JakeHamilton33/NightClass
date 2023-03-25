@@ -20,6 +20,9 @@ public class ExamScript : MonoBehaviour
     public GameObject optionA;
     public GameObject optionB, optionC, optionD;
 
+    public AudioClip[] pencilSounds;
+    public AudioSource audioSource;
+
     #endregion
 
     #region Unity Methods
@@ -42,6 +45,9 @@ public class ExamScript : MonoBehaviour
         optionC.SetActive(false);
         optionD.SetActive(false);
 
+        //Play sound
+        audioSource.clip = pencilSounds[Random.Range(0, pencilSounds.Length - 1)];
+        audioSource.Play();
 
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 0);
@@ -54,6 +60,10 @@ public class ExamScript : MonoBehaviour
         optionC.SetActive(false);
         optionD.SetActive(false);
 
+        //Play sound
+        audioSource.clip = pencilSounds[Random.Range(0, pencilSounds.Length - 1)];
+        audioSource.Play();
+
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 1);
     }
@@ -65,6 +75,10 @@ public class ExamScript : MonoBehaviour
         optionC.SetActive(true);
         optionD.SetActive(false);
 
+        //Play sound
+        audioSource.clip = pencilSounds[Random.Range(0, pencilSounds.Length - 1)];
+        audioSource.Play();
+
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 2);
     }
@@ -75,6 +89,10 @@ public class ExamScript : MonoBehaviour
         optionB.SetActive(false);
         optionC.SetActive(false);
         optionD.SetActive(true);
+
+        //Play sound
+        audioSource.clip = pencilSounds[Random.Range(0, pencilSounds.Length - 1)];
+        audioSource.Play();
 
         //Store Answer
         PlayerPrefs.SetInt(currentQuestionString, 3);

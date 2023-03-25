@@ -31,8 +31,6 @@ public class GenerateTest : MonoBehaviour
     private string[] PeopleAsArray;
     private string[] PlaceAsArray;
 
-    private int i = 0;
-
     // Start is called before the first frame update
     void Awake()
     {

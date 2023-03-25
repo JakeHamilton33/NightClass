@@ -54,11 +54,7 @@ public class GenerateTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            print(questions[i].Q);
-            print(questions[i].GetArticle());
-        }
+
     }
 
     private void SetArrays()
@@ -66,8 +62,8 @@ public class GenerateTest : MonoBehaviour
         names = peopleFile.text.Split('\n');
         places = placesFile.text.Split('\n');
         DateQsArray = DateQsFile.text.Split('\n');
-        PeopleQsArray = DateQsFile.text.Split('\n');
-        PlaceQsArray = DateQsFile.text.Split('\n');
+        PeopleQsArray = PeopleQsFile.text.Split('\n');
+        PlaceQsArray = PlaceQsFile.text.Split('\n');
         DateAsArray = DateAsFile.text.Split('\n');
         PeopleAsArray = PeopleAsFile.text.Split('\n');
         PlaceAsArray = PlaceAsFile.text.Split('\n');
@@ -80,16 +76,26 @@ public class GenerateTest : MonoBehaviour
             int index;
             Question newQuestion;
             string newQuestionString = "Question" + i + "CorrectAnswer";
-            Debug.Log(newQuestionString);
 
             //Choose random question type
-            int type = Random.Range(0, 0);
+            int type = Random.Range(0, 3);
+
+            //record indexes
+            List<int> yearIndexes = new List<int>();
+            List<int> peopleIndexes = new List<int>();
+            List<int> placeIndexes = new List<int>();
 
             //Create question
-            if(type == 0)
+            if (type == 0)
             {
                 //Choose random Date question
                 index = Random.Range(0, DateQsArray.Length);
+                while (yearIndexes.Contains(index))
+                {
+                    index = Random.Range(0, DateQsArray.Length);
+                }
+                //record index
+                yearIndexes.Add(index);
 
                 //Create new question
                 newQuestion = new Question(DateQsArray[index], DateAsArray[2 * index], DateAsArray[2 * index + 1]);
@@ -108,6 +114,12 @@ public class GenerateTest : MonoBehaviour
             {
                 //Choose random People question
                 index = Random.Range(0, PeopleQsArray.Length);
+                while (peopleIndexes.Contains(index))
+                {
+                    index = Random.Range(0, PeopleQsArray.Length);
+                }
+                //record index
+                peopleIndexes.Add(index);
 
                 //Create new question
                 newQuestion = new Question(PeopleQsArray[index], PeopleAsArray[2 * index], PeopleAsArray[2 * index + 1]);
@@ -125,6 +137,12 @@ public class GenerateTest : MonoBehaviour
             {
                 //Choose random Place question
                 index = Random.Range(0, PlaceQsArray.Length);
+                while (placeIndexes.Contains(index))
+                {
+                    index = Random.Range(0, PlaceQsArray.Length);
+                }
+                //record index
+                placeIndexes.Add(index);
 
                 //Create new question
                 newQuestion = new Question(PlaceQsArray[index], PlaceAsArray[2 * index], PlaceAsArray[2 * index + 1]);
@@ -132,7 +150,7 @@ public class GenerateTest : MonoBehaviour
                 //Randomize answer options
                 for (int j = 0; j < newQuestion.options.Length; j++)
                 {
-                    newQuestion.options[j] = places[Random.Range(0, names.Length)];
+                    newQuestion.options[j] = places[Random.Range(0, places.Length)];
                 }
 
                 //Store answer

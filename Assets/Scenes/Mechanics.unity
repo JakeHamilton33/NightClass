@@ -994,6 +994,7 @@ MonoBehaviour:
   - {fileID: 7981256229745537862}
   - {fileID: 1765138859}
   HomeButton: {fileID: 1635718378}
+  TimerText: {fileID: 0}
 --- !u!4 &199278452
 Transform:
   m_ObjectHideFlags: 0
@@ -6356,6 +6357,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Question Randomizer
       objectReference: {fileID: 0}
+    - target: {fileID: 4086918060433701153, guid: bfdc7ca13edc9ae4ab8a0209a07e6a22, type: 3}
+      propertyPath: PlaceAsFile
+      value: 
+      objectReference: {fileID: 4900000, guid: ec0248119a71d684a83902989a8a81dd, type: 3}
+    - target: {fileID: 4086918060433701153, guid: bfdc7ca13edc9ae4ab8a0209a07e6a22, type: 3}
+      propertyPath: PlaceQsFile
+      value: 
+      objectReference: {fileID: 4900000, guid: d34724cfd60bbd14ea25f96571f25b89, type: 3}
+    - target: {fileID: 4086918060433701153, guid: bfdc7ca13edc9ae4ab8a0209a07e6a22, type: 3}
+      propertyPath: PeopleAsFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 8f8397070b680fb4ea4224207e1032a5, type: 3}
+    - target: {fileID: 4086918060433701153, guid: bfdc7ca13edc9ae4ab8a0209a07e6a22, type: 3}
+      propertyPath: PeopleQsFile
+      value: 
+      objectReference: {fileID: 4900000, guid: c2c2497ce6be99c43be866e3a52922ee, type: 3}
+    - target: {fileID: 4086918060433701153, guid: bfdc7ca13edc9ae4ab8a0209a07e6a22, type: 3}
+      propertyPath: buttons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086918060433701153, guid: bfdc7ca13edc9ae4ab8a0209a07e6a22, type: 3}
+      propertyPath: buttons.Array.data[0]
+      value: 
+      objectReference: {fileID: 309622876}
+    - target: {fileID: 4086918060433701153, guid: bfdc7ca13edc9ae4ab8a0209a07e6a22, type: 3}
+      propertyPath: buttons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1386569524}
+    - target: {fileID: 4086918060433701153, guid: bfdc7ca13edc9ae4ab8a0209a07e6a22, type: 3}
+      propertyPath: buttons.Array.data[2]
+      value: 
+      objectReference: {fileID: 797113817}
+    - target: {fileID: 4086918060433701153, guid: bfdc7ca13edc9ae4ab8a0209a07e6a22, type: 3}
+      propertyPath: buttons.Array.data[3]
+      value: 
+      objectReference: {fileID: 267350846}
     - target: {fileID: 4086918060433701153, guid: bfdc7ca13edc9ae4ab8a0209a07e6a22, type: 3}
       propertyPath: phoneTexts.Array.data[0]
       value: 

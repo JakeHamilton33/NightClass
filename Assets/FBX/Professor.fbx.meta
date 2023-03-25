@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Glasses
+    second: {fileID: 2100000, guid: b953fcd48dd03b049b61f53c1afd752b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material.002
     second: {fileID: 2100000, guid: 257e3d7801f9a0643b2c444682c6fdf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mug
+    second: {fileID: 2100000, guid: 881fd69a9fed84646b1f54208b914180, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -19,11 +29,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: black
     second: {fileID: 2100000, guid: d71d9595349cafe4a9bc0ae7877b84f3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: light
-    second: {fileID: 2100000, guid: b953fcd48dd03b049b61f53c1afd752b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

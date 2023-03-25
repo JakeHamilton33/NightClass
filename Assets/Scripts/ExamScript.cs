@@ -25,13 +25,12 @@ public class ExamScript : MonoBehaviour
     #region Unity Methods
     private void Awake()
     {
-        //Delete all answers
-        PlayerPrefs.DeleteAll();
 
         //Grab generated test questions and answers
         questions = GenerateTest.instance.questions;
 
-        GenerateTest.instance.SetTestText(gameObject, questions[0], 1);
+        GenerateTest.instance.SetTestText(gameObject, questions[currentQuestion-1], currentQuestion);
+        PlayerPrefs.SetInt(currentQuestionString, 5);
     }
     #endregion
 
@@ -47,7 +46,7 @@ public class ExamScript : MonoBehaviour
         answerButtonD.image.sprite = optionD;
         */
         //Store Answer
-        PlayerPrefs.SetInt(currentQuestionString, 1);
+        PlayerPrefs.SetInt(currentQuestionString, 0);
     }
     public void AnswerB()
     {
@@ -59,7 +58,7 @@ public class ExamScript : MonoBehaviour
         //answerButtonD.image.sprite = optionD;
 
         //Store Answer
-        PlayerPrefs.SetInt(currentQuestionString, 2);
+        PlayerPrefs.SetInt(currentQuestionString, 1);
     }
     public void AnswerC()
     {
@@ -71,7 +70,7 @@ public class ExamScript : MonoBehaviour
         //answerButtonD.image.sprite = optionD;
 
         //Store Answer
-        PlayerPrefs.SetInt(currentQuestionString, 3);
+        PlayerPrefs.SetInt(currentQuestionString, 2);
     }
     public void AnswerD()
     {
@@ -83,30 +82,36 @@ public class ExamScript : MonoBehaviour
         //answerButtonD.image.sprite = optionDSelected;
 
         //Store Answer
-        PlayerPrefs.SetInt(currentQuestionString, 4);
+        PlayerPrefs.SetInt(currentQuestionString, 3);
     }
     public void NextQuestion()
     {
-        //Set all buttons to uncircled sprites
-        //answerButtonA.image.sprite = optionA;
-        //answerButtonB.image.sprite = optionB;
-        //answerButtonC.image.sprite = optionC;
-        //answerButtonD.image.sprite = optionD;
+        if(PlayerPrefs.GetInt(currentQuestionString) == 0 | PlayerPrefs.GetInt(currentQuestionString) == 1 | PlayerPrefs.GetInt(currentQuestionString) == 2 | PlayerPrefs.GetInt(currentQuestionString) == 3)
+        {
+            if(currentQuestion < 10)
+            {
+                //Set all buttons to uncircled sprites
+                //answerButtonA.image.sprite = optionA;
+                //answerButtonB.image.sprite = optionB;
+                //answerButtonC.image.sprite = optionC;
+                //answerButtonD.image.sprite = optionD;
 
-        Debug.Log(currentQuestionString + ": " + PlayerPrefs.GetInt(currentQuestionString));
-        currentQuestion++;
-        currentQuestionString = "Question" + currentQuestion;
-        //Load Next Question
-        /*
-        questionField.text = questions[currentQuestion-1];
-        answers = GenerateTest.instance.GetAnswers(currentQuestion);
+                Debug.Log(currentQuestionString + ": " + PlayerPrefs.GetInt(currentQuestionString));
+                currentQuestion++;
+                currentQuestionString = "Question" + currentQuestion;
+                PlayerPrefs.SetInt(currentQuestionString, 5);
 
-        answerButtonA.text = answers[0];
-        answerButtonB.text = answers[1];
-        answerButtonC.text = answers[2];
-        answerButtonD.text = answers[3];
+                GenerateTest.instance.SetTestText(gameObject, questions[currentQuestion - 1], currentQuestion);
+            }
+            else if(currentQuestion == 10)
+            {
+                Debug.Log(currentQuestionString + ": " + PlayerPrefs.GetInt(currentQuestionString));
+                PlayerPrefs.SetInt("Caught", 0);
+                PhoneScript.instance.EndGame();
 
-        */
+            }
+        }
+        
     }
     #endregion
 }

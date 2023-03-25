@@ -103,7 +103,7 @@ public class ProfessorScript : MonoBehaviour
         transform.position = midPostion;
 
         //Play sound
-        audioSource.clip = throatSounds[Random.Range(0, throatSounds.Length)];
+        audioSource.clip = throatSounds[Random.Range(0, throatSounds.Length - 1)];
         audioSource.Play();
 
         //transform.rotation = midRotation;
@@ -148,7 +148,9 @@ public class ProfessorScript : MonoBehaviour
         #endregion
 
         //End Game
-        Debug.Log("Game Over");
+        HeadMovement._position = HeadMovement.Position.Caught;
+        PlayerPrefs.SetInt("Caught", 1);
+        PhoneScript.instance.EndGame();
     }
 
     IEnumerator ResetPosition()

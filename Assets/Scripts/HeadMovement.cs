@@ -34,7 +34,7 @@ public class HeadMovement : MonoBehaviour
 
     #region Declarations
     //Made _position public static so it can be shared between scripts
-    public enum Position { Paper, Professor, Phone, Classmate, Moving, Website}
+    public enum Position { Paper, Professor, Phone, Classmate, Moving, Website, Caught}
     public static Position _position = Position.Paper;
 
     public GameObject player, phone, mainCamera;

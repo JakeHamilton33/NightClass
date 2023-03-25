@@ -116,4 +116,24 @@ public class PhoneScript : MonoBehaviour
         _website = WebsiteState.Selecting;
         StateChange();
     }
+
+    public void EndGame()
+    {
+        StartCoroutine(GameOver());
+    }
+
+    IEnumerator GameOver()
+    {
+        if(PlayerPrefs.GetInt("Caught") == 1)
+        {
+            yield return new WaitForSeconds(2f);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+        }
+        else
+        {
+            yield return null;
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+        }
+        
+    } 
 }

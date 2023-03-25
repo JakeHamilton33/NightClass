@@ -73,10 +73,12 @@ public class GenerateTest : MonoBehaviour
 
     public void GenerateQuestions()
     {
-        for(int i = 0; i < 10; i++)
+        for(int i = 1; i <= 10; i++)
         {
             int index;
             Question newQuestion;
+            string newQuestionString = "Question" + i + "CorrectAnswer";
+            Debug.Log(newQuestionString);
 
             //Choose random question type
             int type = Random.Range(0, 0);
@@ -97,7 +99,8 @@ public class GenerateTest : MonoBehaviour
                 }
 
                 //Store answer
-                PlayerPrefs.SetInt("Question" + i + "CorrectAnswer", newQuestion.answer);
+                Debug.Log(newQuestion.answer);
+                PlayerPrefs.SetInt(newQuestionString, newQuestion.answer);
             }
             else if( type == 1)
             {

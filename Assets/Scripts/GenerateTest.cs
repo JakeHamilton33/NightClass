@@ -8,7 +8,6 @@ public class GenerateTest : MonoBehaviour
     public static GenerateTest instance;
     
     public List<Question> questions = new List<Question>();
-    public int[] answers = new int[10];
     public TextAsset peopleFile;
     public TextAsset placesFile;
     public TextAsset DateQsFile;
@@ -98,7 +97,7 @@ public class GenerateTest : MonoBehaviour
                 }
 
                 //Store answer
-                answers[i] = newQuestion.answer;
+                PlayerPrefs.SetInt("Question" + i + "CorrectAnswer", newQuestion.answer);
             }
             else if( type == 1)
             {
@@ -115,7 +114,7 @@ public class GenerateTest : MonoBehaviour
                 }
 
                 //Store answer
-                answers[i] = newQuestion.answer;
+                PlayerPrefs.SetInt("Question" + i + "CorrectAnswer", newQuestion.answer);
             }
             else
             {
@@ -132,7 +131,7 @@ public class GenerateTest : MonoBehaviour
                 }
 
                 //Store answer
-                answers[i] = newQuestion.answer;
+                PlayerPrefs.SetInt("Question" + i + "CorrectAnswer", newQuestion.answer);
             }
 
             questions.Add(newQuestion);

@@ -19,7 +19,7 @@ public class EndOfGameScript : MonoBehaviour
         caught = PlayerPrefs.GetInt("Caught") == 1;
         CheckGrade();
     }
-
+    #region Check Grade
     void CheckGrade()
     {
         if (!caught)
@@ -116,6 +116,16 @@ public class EndOfGameScript : MonoBehaviour
         {
             Caught.SetActive(true);
         }
+    }
+    #endregion
+
+    public void MenuButton()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+    }
+    public void RestartButton()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
 }

@@ -7598,6 +7598,7 @@ MonoBehaviour:
   throatSounds:
   - {fileID: 8300000, guid: 5be11339b2e6d5d40a9c6ee3529bd6ae, type: 3}
   - {fileID: 8300000, guid: 2ec94de590e3d9b478750ae76d397fea, type: 3}
+  death: {fileID: 8300000, guid: 99ad78712718161459574653983233e7, type: 3}
   audioSource: {fileID: 1686850265}
   moveTimer: 0
   head: {fileID: 1816582436}

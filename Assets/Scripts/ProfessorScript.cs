@@ -20,6 +20,7 @@ public class ProfessorScript : MonoBehaviour
 
     //Sound Array
     public AudioClip[] throatSounds;
+    public AudioClip death;
     public AudioSource audioSource;
 
     private bool moving;
@@ -151,6 +152,8 @@ public class ProfessorScript : MonoBehaviour
         //End Game
         PlayerPrefs.SetInt("Caught", 1);
         head.GetComponent<HeadMovement>().Caught();
+        audioSource.clip = death;
+        audioSource.Play();
     }
 
     IEnumerator ResetPosition()
